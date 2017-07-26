@@ -15,6 +15,7 @@
 .contents{
   width: 70%; height: 80%;
   margin: 0 15%;
+  padding: 10% 0;
 }
 
 .jumbotron > .information{
@@ -47,8 +48,10 @@
   text-align: center;
 }
 
-.img__thumb > img{
+.img__thumb > span{
+  display: block;
   background-size: cover;
+  background-position: center center;
   padding-top: 56.25%;
   width: 100%;
 }
