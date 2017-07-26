@@ -1,0 +1,317 @@
+@charset "utf-8";
+
+// media query setting
+// --------------------------------------------------------------------------------------------------------------------------
+
+$iphone4       : 'only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)';
+$phone         : 'only screen and (min-device-width : 320px) and (max-device-width : 410px)';
+$phone2        : 'only screen and (min-device-width : 375px) and (max-device-width : 420px)';
+$screens_phone : 'only screen and (min-width : 400px)';
+$tablet        : 'only screen and (min-device-width : 768px) and (max-device-width : 1024px)';
+$screens_tablet: 'only screen and (min-width : 768px)';
+$screens       : 'only screen and (min-width : 1024px)';
+$large_screens : 'only screen and (min-width : 1824px)';
+
+
+@mixin mediaQuery_phone_s{
+  @media #{$phone}{ @content }
+}
+
+@mixin mediaQuery_phone_m{
+  @media #{$phone2}, #{$screens_phone}{ @content }
+}
+
+@mixin mediaQuery_tablet {
+  @media #{$tablet}, #{$screens_tablet}{ @content }
+}
+
+@mixin mediaQuery_pc     {
+  @media #{$screens}{ @content }
+}
+
+
+// basix customize setting
+// --------------------------------------------------------------------------------------------------------------------------
+
+// css3 vender prefix
+@mixin css3($property, $value) {
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+    #{$prefix}#{$property}: $value;
+  }
+}
+
+// css3 keyframes
+@mixin keyframes($name){
+	@-webkit-keyframes $name { @content }; 
+	@-moz-keyframes $name { @content };
+	@-ms-keyframes $name { @content };
+	@-o-keyframes $name { @content };
+	@keyframes $name { @content };
+}
+
+
+// position setting
+// --------------------------------------------------------------------------------------------------------------------------
+
+$no: auto;
+
+// position: absolute ------------------------------------------------
+@mixin pos_a($width, $height, $top, $right, $bottom, $left, $mt, $ml){
+	position: absolute;
+	width: $width; height: $height;
+	top: $top; right: $right; bottom: $bottom; left: $left;
+	margin: $mt $ml;
+}
+
+@mixin a_top_center($width, $height){
+	position: absolute;
+	width: $width; height: $height;
+	top: 0; left: 50%;
+	margin-left: -#{$width / 2};
+}
+
+@mixin a_center_center($width, $height){
+	position: absolute;
+	width: $width; height: $height;
+	top: 50%; left: 50%;
+	margin: -#{$height / 2} -#{$width / 2};
+}
+
+// position: fixed ---------------------------------------------------
+@mixin pos_f($width, $height, $top, $right, $bottom, $left, $mt, $ml){
+	position: fixed;
+	width: $width; height: $height;
+	top: $top; right: $right; bottom: $bottom; left: $left;
+	margin: $mt $ml;	
+}
+
+@mixin f_top_center($width, $height){
+	position: fixed;
+	width: $width; height: $height;
+	top: 0; left: 50%;
+	margin-left: -#{$width / 2};
+}
+
+@mixin f_center_center($width, $height){
+	position: fixed;
+	width: $width; height: $height;
+	top: 50%; left: 50%;
+	margin: -#{$height / 2} -#{$width / 2};
+}
+
+// position: relative -------------------------------------------------
+@mixin pos_r($width, $height, $top, $left, $mt, $ml){
+	position: relative;
+	width: $width; height: $height;
+	top: $top; left: $left;
+	margin: $mt $ml;
+}
+
+@mixin r_top_center($width, $height){
+	position: relative;
+	width: $width; height: $height;
+	top: 0; left: 50%;
+	margin-left: -#{$width / 2};
+}
+
+@mixin r_center_center($width, $height){
+	position: relative;
+	width: $width; height: $height;
+	top: 50%; left: 50%;
+	margin: -#{$height / 2} -#{$width / 2};
+}
+
+// each positions setting----------------------------------------------
+@mixin top_left($top, $left){
+  top: $top; left: $left;
+}
+
+@mixin top_right($top, $right){
+  top: $top; right: $right;
+}
+
+@mixin bottom_left($bottom, $left){
+  bottom: $bottom; left: $left;
+}
+
+@mixin bottom_right($bottom, $right){
+  bottom: $bottom; right: $right;
+}
+
+@mixin each_pos_0{
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+// size setting -------------------------------------------------------
+@mixin size($width, $height){
+  width: $width; height: $height;
+}
+
+// IE8以上対応のpositionを利用した縦横中央揃え　レスポンシブ対応 ------
+// ttp://qiita.com/sawadays0118/items/b44c2082560242b74f74
+@mixin vh-center($axis:xy) {
+  position: relative;
+  & > * {
+    position: absolute;
+    @if $axis == x {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    } @elseif $axis == y {
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+    } @else {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+
+
+// original setting
+// --------------------------------------------------------------------------------------------------------------------------
+
+// images path setting ------------------------------------------------
+$img_path:'users/owners/';
+$svg: '.svg';   $png: '.png';
+
+@mixin imgSvg($filename){  // how to use @include imgSvg(test)
+	background-image: image-url(#{$img_path}#{$filename}#{$svg});
+}
+
+@mixin imgPng($filename){  // how to use @include imgPng(test)
+	background-image: image-url(#{$img_path}#{$filename}#{$png});
+}
+
+// border setting -----------------------------------------------------
+@mixin hr_solid($width, $color){
+	border: solid #{$width} #{$color};
+}
+
+@mixin hr_dotted($width, $color){
+	border: dotted #{$width} #{$color};
+}
+
+@mixin hr_parts($direction, $width, $color){
+	border-#{$direction}: solid #{$width} #{$color};
+}
+
+@mixin hr_none{
+  border: none;
+}
+
+// old border setting...
+@mixin border($width, $color){
+	border: solid #{$width} #{$color};
+}
+
+// border radius setting ----------------------------------------------
+@mixin radius($value){
+	border-radius: $value;
+}
+
+// font setting -------------------------------------------------------
+@mixin font_style($color, $size, $weight, $height){
+	color: $color;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+@mixin align_center{
+  text-align: center;
+}
+
+@mixin align_left{
+  text-align: left;
+}
+
+@mixin align_right{
+  text-align: right;
+}
+
+// my default style setting
+// だんだん太くなってく
+@font-face{
+	font-family: 'light';
+	src: font-url('light.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'regular';
+	src: font-url('regular.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'medium';
+	src: font-url('medium.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'bold';
+	src: font-url('bold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'heavy';
+	src: font-url('heavy.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'black';
+	src: font-url('black.ttf') format('truetype');
+}
+
+
+@font-face{
+	font-family: 'icon';
+	src: font-url('iconset.ttf') format('truetype');
+}
+
+@font-face{
+  // memo: dripicon ==> develop/fonts
+  font-family: "dripicons";
+  src: font-url("dripicons.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon{
+  font-family: icon;
+}
+
+
+// Mixin for placeholder
+@mixin placeholder{
+  &:placeholder-shown{
+    @content;
+  }
+  &::-webkit-input-placeholder{
+    @content;
+  }
+  &:-moz-placeholder{
+    opacity: 1;
+    @content;
+  }
+  &::-moz-placeholder{
+    opacity: 1;
+    @content;
+  }
+  &:-ms-input-placeholder{
+    @content;
+  }
+}
+
+// how use?
+// @include placeholder {
+  // ここに書く...
+  // color: #00ff00;
+  // font-size: 20px;
+  // line-height: 1;
+// }

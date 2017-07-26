@@ -1,0 +1,62 @@
+/* common style setting */
+
+/* my default style setting */
+@font-face{
+	font-family: 'light';
+	src: url('../fonts/light.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'regular';
+	src: url('../fonts/regular.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'medium';
+	src: url('../fonts/medium.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'bold';
+	src: url('../fonts/bold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'heavy';
+	src: url('../fonts/heavy.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'black';
+	src: url('../fonts/black.ttf') format('truetype');
+}
+
+html, body{
+  color: #666;
+  font-family: regular;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0.2em 0;
+}
+
+
+h1{
+  font-size: 25px;
+}
+
+h2{
+  font-size: 15px;
+}
+
+h3{
+  font-size: 13px;
+}
+
+p{
+  font-size: 13px;
+  line-height: 2em;
+}
+/* /common ================ */
