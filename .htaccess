@@ -1,0 +1,7 @@
+<Files ~ "\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+ 
+RewriteEngine on
+RewriteCond %{THE_REQUEST} ^.*/index.html
+RewriteRule ^(.*)index.html$ https://iki396.github.io/portfolio/biwakoTrip/$1 [R=301,L]
