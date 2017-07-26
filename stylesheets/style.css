@@ -13,11 +13,9 @@
 }
 
 .contents{
-  width: 70%;
+  width: 70%; height: 80%;
   margin: 0 15%;
 }
-
-
 
 .jumbotron > .information{
   width: 70%; height: 100%;
@@ -38,16 +36,12 @@
 }
 
 /* ----------------------------------------- */
+
 #sample{
   background: #f9f9f9;
 }
 
-.test{
-  width: 25%; float: left;
-}
-
-.img__thumb{
-  background-image: url(http://sk51.jp/wp-content/uploads/2015/11/01.jpg);
+.img__thumb > img{
   background-size: cover;
   padding-top: 56.25%;
   width: 100%;
