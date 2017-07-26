@@ -1,0 +1,56 @@
+@font-face{
+  /*   memo: dripicon ==> develop/fonts */
+  font-family: "dripicons";
+  src: url("../fonts/dripicons.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.jumbotron{
+  position: relative;
+  width: 100vw; height: 100vh;
+  background: #fff;
+}
+
+.contents{
+  width: 70%;
+  margin: 0 15%;
+}
+
+
+
+.jumbotron > .information{
+  width: 70%; height: 100%;
+  margin: 0 15%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.jumbotron > .information > h1{
+  width: 100%;
+  color: #222;
+}
+
+.jumbotron > .information > h1 > p{
+  color: #aaa;
+}
+
+/* ----------------------------------------- */
+#sample{
+  background: #f9f9f9;
+}
+
+.test{
+  width: 25%; float: left;
+}
+
+.img__thumb{
+  background-image: url(http://sk51.jp/wp-content/uploads/2015/11/01.jpg);
+  background-size: cover;
+  padding-top: 56.25%;
+  width: 100%;
+}
+
+/* ----------------------------------------- */
